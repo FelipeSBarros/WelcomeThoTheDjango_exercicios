@@ -34,18 +34,10 @@ def verbing(s):
 # Return the resulting string.
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
+import re
 def not_bad(s):
-    badn = s.find("bad")
-    notn = s.find("not")
-    if badn == -1 or notn == -1:
-        sreturn = s
-    elif badn > notn:
-        sreturn = s[:notn] + "good"
-    elif badn < notn:
-        sreturn = s
-    if s.endswith("!"):
-        sreturn = sreturn + "!"
-    return sreturn
+    line = re.sub('not.*bad', 'good', s)
+    return line
 
 
 # F. front_back
